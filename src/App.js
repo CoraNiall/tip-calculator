@@ -34,18 +34,26 @@ function App() {
 
   return (
     <div className="App">
-      <Question onAddBill={onAddBill} bill={bill}>
-        How much is the bill? £
-      </Question>
-      <Dropdown onAddTip={onAddTip}>How much did you enjoy the food?</Dropdown>
-      <Dropdown onAddTip={onAddTip}>
-        How much did your friend enjoy the food?
-      </Dropdown>
-      <Button onClick={onTotalBill}>Submit</Button>
-      <Button onClick={onResetBill}>Reset</Button>
-      <h4>Result:</h4>
-      <Result>Your tip is: {tipValue}%</Result>
-      <Result>Your total bill is: £{totalBill}</Result>
+      <div className="root">
+        <ul>
+          <Question onAddBill={onAddBill} bill={bill}>
+            How much is the bill? £
+          </Question>
+          <Dropdown onAddTip={onAddTip}>
+            How much did you enjoy the food?
+          </Dropdown>
+          <Dropdown onAddTip={onAddTip}>
+            How much did your friend enjoy the food?
+          </Dropdown>
+        </ul>
+        <div className="buttons">
+          <Button onClick={onTotalBill}>Submit</Button>
+          <Button onClick={onResetBill}>Reset</Button>
+        </div>
+        <h4>Result:</h4>
+        <Result>Your tip is: {tipValue}%</Result>
+        <Result>Your total bill is: £{totalBill}</Result>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../index.css';
 
 export default function Question({ children, onAddBill, bill }) {
   const handleChange = value => {
@@ -6,7 +7,7 @@ export default function Question({ children, onAddBill, bill }) {
   };
 
   return (
-    <>
+    <li>
       <label htmlFor="question1">{children}</label>
       <input
         type="text"
@@ -14,6 +15,6 @@ export default function Question({ children, onAddBill, bill }) {
         value={bill}
         onChange={e => handleChange(e.target.value)}
       />
-    </>
+    </li>
   );
 }

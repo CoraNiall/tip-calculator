@@ -1,9 +1,10 @@
 import React from 'react';
+import '../index.css';
 
 export default function Result({ children, value }) {
   return (
     <>
-      <p>{children}</p>
+      <span>{children}</span>
     </>
   );
 }
