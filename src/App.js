@@ -20,7 +20,8 @@ function App() {
       : setTipValue(value);
   };
 
-  const onTotalBill = () => {
+  const onTotalBill = e => {
+    e.preventDefault();
     const total = bill + (bill * tipValue) / 100;
     setTotalBill(total.toFixed(2));
     return totalBill;
@@ -35,21 +36,25 @@ function App() {
   return (
     <div className="App">
       <div className="root">
-        <ul>
-          <Question onAddBill={onAddBill} bill={bill}>
-            How much is the bill? £
-          </Question>
-          <Dropdown onAddTip={onAddTip}>
-            How much did you enjoy the food?
-          </Dropdown>
-          <Dropdown onAddTip={onAddTip}>
-            How much did your friend enjoy the food?
-          </Dropdown>
-        </ul>
-        <div className="buttons">
-          <Button onClick={onTotalBill}>Submit</Button>
-          <Button onClick={onResetBill}>Reset</Button>
-        </div>
+        <form>
+          <ul>
+            <Question onAddBill={onAddBill} bill={bill}>
+              How much is the bill? £
+            </Question>
+            <Dropdown onAddTip={onAddTip}>
+              How much did you enjoy the food?
+            </Dropdown>
+            <Dropdown onAddTip={onAddTip}>
+              How much did your friend enjoy the food?
+            </Dropdown>
+          </ul>
+          <div className="buttons">
+            <Button type="submit" onClick={e => onTotalBill(e)}>
+              Submit
+            </Button>
+            <Button onClick={() => onResetBill()}>Reset</Button>
+          </div>
+        </form>
         <h4>Result:</h4>
         <Result>Your tip is: {tipValue}%</Result>
         <Result>Your total bill is: £{totalBill}</Result>
